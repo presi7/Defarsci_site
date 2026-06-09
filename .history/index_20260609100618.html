@@ -193,23 +193,54 @@
 
     /* TEAM CARD */
     .team-card {
-      background: white;
-      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(65,112,196,0.08);
-      box-shadow: 0 4px 20px rgba(15,36,84,0.06);
+      box-shadow: 0 8px 30px rgba(15, 36, 84, 0.12);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(15,36,84,0.14);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(15, 36, 84, 0.18);
     }
-    .team-card-img {
+    .team-photo-wrap {
+      position: relative;
       width: 100%;
-      height: 220px;
+      height: 260px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .team-photo-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      background: linear-gradient(135deg, #c8d9f8, #a1bef2);
-      display: block;
+      object-position: center 22%;
+      transition: transform 0.4s ease;
+    }
+    .team-card:hover .team-photo-wrap img {
+      transform: scale(1.04);
+    }
+    /* Yande : photo plus large (corps entier) → léger zoom pour aligner le buste */
+    .team-photo-wrap img.photo-yande {
+      object-position: center 28%;
+      transform: scale(1.18);
+      transform-origin: center 28%;
+    }
+    .team-card:hover .team-photo-wrap img.photo-yande {
+      transform: scale(1.22);
+    }
+    .team-card-body {
+      flex: 1;
+      min-height: 100px;
+      background: #fff;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     /* TESTIMONIAL */
@@ -667,43 +698,68 @@
           <p class="mx-auto mt-4 max-w-xl text-slate-500 text-sm">Une équipe engagée qui accompagne chaque stagiaire vers le niveau pro.</p>
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="team-card">
-            <img src="assets/img/team/ndoye.png" alt="Mame Moussa Ndoye" class="team-card-img">
-            <div class="p-5">
-              <h3 class="font-bold text-slate-900">Mame Moussa Ndoye</h3>
-              <p class="text-xs mt-1 font-semibold" style="color:var(--brand);">Développeur Web</p>
+
+          <article class="team-card">
+            <div class="team-photo-wrap bg-blue-100">
+              <img src="assets/img/team/presi0.png" alt="Ndiankou Ndoye">
             </div>
-          </div>
-          <div class="team-card">
-            <div class="team-card-img" style="display:flex;align-items:center;justify-content:center;">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(65,112,196,0.4)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="team-card-body">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                <span class="text-[9px] font-black uppercase tracking-widest text-blue-400">Direction</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 leading-tight">Ndiankou Ndoye</h3>
+              <p class="text-[11px] font-semibold text-blue-400 mt-1">Directeur du RDL</p>
             </div>
-            <div class="p-5">
-              <h3 class="font-bold text-slate-900">Mamadou Samba Barry</h3>
-              <p class="text-xs mt-1 font-semibold" style="color:var(--accent);">Arduino & Impression 3D</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo-wrap bg-indigo-100">
+              <img src="assets/img/team/meuz.png" alt="Mame Moussa Ndoye">
             </div>
-          </div>
-          <div class="team-card">
-            <div class="team-card-img" style="display:flex;align-items:center;justify-content:center;">
-              <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(65,112,196,0.4)" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div class="team-card-body">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0"></span>
+                <span class="text-[9px] font-black uppercase tracking-widest text-indigo-400">Dev Web</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 leading-tight">Mame Moussa Ndoye</h3>
+              <p class="text-[11px] font-semibold text-indigo-400 mt-1">Coach Développement Web</p>
             </div>
-            <div class="p-5">
-              <h3 class="font-bold text-slate-900">Yande Diagne</h3>
-              <p class="text-xs mt-1 font-semibold" style="color:var(--brand);">Responsable RH</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo-wrap bg-orange-100">
+              <img src="assets/img/team/barry.png" alt="Mamadou Samba Barry">
             </div>
-          </div>
-          <div class="team-card">
-            <img src="assets/img/team/presi.png" alt="Ndiankou Ndoye" class="team-card-img">
-            <div class="p-5">
-              <h3 class="font-bold text-slate-900">Ndiankou Ndoye</h3>
-              <p class="text-xs mt-1 font-semibold" style="color:var(--brand);">Développeur Web/Mobile</p>
+            <div class="team-card-body">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0"></span>
+                <span class="text-[9px] font-black uppercase tracking-widest text-orange-400">Hardware</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 leading-tight">Mamadou Samba Barry</h3>
+              <p class="text-[11px] font-semibold text-orange-500 mt-1">Coach Arduino & Impression 3D</p>
             </div>
-          </div>
+          </article>
+
+          <article class="team-card">
+            <div class="team-photo-wrap bg-teal-100">
+              <img src="assets/img/team/yande1.jpeg" alt="Yande Diagne" class="photo-yande">
+            </div>
+            <div class="team-card-body">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-teal-400 flex-shrink-0"></span>
+                <span class="text-[9px] font-black uppercase tracking-widest text-teal-400">RH</span>
+              </div>
+              <h3 class="text-sm font-bold text-slate-900 leading-tight">Yande Diagne</h3>
+              <p class="text-[11px] font-semibold text-teal-500 mt-1">Responsable RH & Comptabilité</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+<!-- TESTIMONIALS -->
     <section class="py-24 reveal" style="background:white;">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="text-center mb-14">
@@ -844,7 +900,7 @@
         <p class="max-w-md text-sm leading-7" style="color:rgba(255,255,255,0.65); font-family: 'Roboto', sans-serif; font-size: medium;">
           <strong class="text-white">DEFAR Sci</strong>, un espace d'innovation, de transmission et d'accompagnement pour rendre les bienfaits de la science accessibles à tous.
         </p>
-        <div class="flex gap-6 text-xs font-semibold" style="color:rgba(255,255,255,0.5); font-family: 'r';">
+        <div class="flex gap-6 text-xs font-semibold" style="color:rgba(255,255,255,0.5); font-family: 'Roboto', sans-serif; font-weight: 900;">
           <a href="#hero" class="hover:text-white transition">Accueil</a>
           <a href="#about" class="hover:text-white transition">A propos</a>
           <a href="#services" class="hover:text-white transition">Domaines</a>
